@@ -40,5 +40,5 @@
 
     curl --location --request PUT 'http://localhost:8080/update/hospital?patient_name=patient1&hospital_name=hospital2'
 
-#### delete Patient details
+#### Delete Patient details
     curl --location --request DELETE 'http://localhost:8080/delete/hospital?patient_name=patient1'
