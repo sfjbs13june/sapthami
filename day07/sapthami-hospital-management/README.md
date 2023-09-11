@@ -24,7 +24,7 @@
     curl --location --request DELETE 'http://localhost:8080/delete/hospital?hospital_name=hospital1'
 
 #### Create or store Patient
-    curl --location --request POST 'http://localhost:8080/save/patient' \
+    curl --location --request POST 'http://localhost:8080/get/patient' \
     --header 'Content-Type: application/json' \
     --data-raw '{
                     "patient_name":"patient1",
