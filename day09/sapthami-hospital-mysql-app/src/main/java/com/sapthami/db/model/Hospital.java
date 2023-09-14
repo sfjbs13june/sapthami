@@ -1,41 +1,36 @@
 package com.sapthami.db.model;
 
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-
 @Entity
 public class Hospital {
+
+    @Column(name = "hospitalname")
+    String hospitalname;
+
+    @Column(name = "address")
+    String address;
     @Id
     @GeneratedValue
     @Column(name = "id")
-    private Integer id;
-    @Column(name = "hospital_name")
-    private String hospital_name;
-    @Column(name = "address")
-    private String address;
+    int id;
+    public Hospital(){}
 
-
-    public Hospital() {
-
-    }
-
-
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
+    public Hospital(String hospitalname, String address, int id) {
+        this.hospitalname = hospitalname;
+        this.address = address;
         this.id = id;
     }
 
-    public String getHospital_name() {
-        return hospital_name;
+    public String getHospitalname() {
+        return hospitalname;
     }
 
-    public void setHospital_name(String hospital_name) {
-        this.hospital_name = hospital_name;
+    public void setHospitalname(String hospitalname) {
+        this.hospitalname = hospitalname;
     }
 
     public String getAddress() {
@@ -46,4 +41,11 @@ public class Hospital {
         this.address = address;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 }

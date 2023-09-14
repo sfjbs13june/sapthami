@@ -1,5 +1,7 @@
 package com.sapthami.db.model;
 
+
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,42 +9,52 @@ import javax.persistence.Id;
 
 @Entity
 public class Patient {
+
+    @Column(name = "patientname")
+    String patientname;
+
     @Id
     @GeneratedValue
-    @Column(name = "p_id")
-    private Integer p_id;
-    @Column(name = "patient_name")
-    private String patient_name;
-    @Column(name = "hospital_name")
-    private String hospital_name;
-    @Column(name = "disease")
-    private String disease;
+    @Column(name = "id")
+    int id;
 
-    public Patient() {
+    @Column(name = "hospitalname")
+    String hospitalname;
+
+    @Column(name="disease")
+    String disease;
+
+    public Patient(){}
+
+    public Patient(String patientname, int id, String hospitalname, String disease) {
+        this.patientname = patientname;
+        this.id = id;
+        this.hospitalname = hospitalname;
+        this.disease = disease;
     }
 
-    public Integer getP_id() {
-        return p_id;
+    public String getPatientname() {
+        return patientname;
     }
 
-    public void setP_id(Integer p_id) {
-        this.p_id = p_id;
+    public void setPatientname(String patientname) {
+        this.patientname = patientname;
     }
 
-    public String getPatient_name() {
-        return patient_name;
+    public int getId() {
+        return id;
     }
 
-    public void setPatient_name(String patient_name) {
-        this.patient_name = patient_name;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public String getHospital_name() {
-        return hospital_name;
+    public String getHospitalname() {
+        return hospitalname;
     }
 
-    public void setHospital_name(String hospital_name) {
-        this.hospital_name = hospital_name;
+    public void setHospitalname(String hospitalname) {
+        this.hospitalname = hospitalname;
     }
 
     public String getDisease() {

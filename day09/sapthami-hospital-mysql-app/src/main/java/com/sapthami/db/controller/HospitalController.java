@@ -1,35 +1,36 @@
 package com.sapthami.db.controller;
 
+
 import com.sapthami.db.model.Hospital;
-import com.sapthami.db.repository.HospitalRepository;
+import com.sapthami.db.repository.HopsitalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+
 
 @Controller
 @RequestMapping(value = "/hospital")
 public class HospitalController {
     @Autowired
-    HospitalRepository hospitalRepository;
-    @GetMapping(value = "/get")
-    public @ResponseBody
-    Iterable<Hospital> getAll() {
-        return hospitalRepository.findAll();
-    }
+    HopsitalRepository hopsitalRepository;
 
-    @PostMapping(value = "/save")
+    @PostMapping("/save")
     public @ResponseBody
-    String store(@RequestBody final Hospital hospital) {
-        hospitalRepository.save(hospital);
+    String createHospital(@RequestBody final Hospital hospital){
+        hopsitalRepository.save(hospital);
         return "saved";
     }
 
-
-    @DeleteMapping(value = "/delete")
+    @GetMapping("/get")
     public @ResponseBody
-    String store(@RequestParam("id") final int id) {
-        hospitalRepository.deleteById(id);
-        return "deleted";
+    Iterable<Hospital> getAll() {
+        return hopsitalRepository.findAll();
     }
 
+    @DeleteMapping("/delete")
+    public @ResponseBody
+    String store(@RequestParam("id") final int id) {
+        hopsitalRepository.deleteById(id);
+        return "deleted";
+    }
 }
