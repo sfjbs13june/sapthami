@@ -1,37 +1,28 @@
 package com.sapthami.app.module;
 
+
 import org.springframework.data.annotation.Id;
 
 public class Hospital {
 
-    @Id
-    String hospital_id;
-    String hospital_name;
+    String hospitalname;
     String address;
+    @Id
+    int id;
+    public Hospital(){}
 
-    public Hospital() {
-    }
-
-    public Hospital(String hospital_id, String hospital_name, String address) {
-        this.hospital_id = hospital_id;
-        this.hospital_name = hospital_name;
+    public Hospital(String hospitalname, String address, int id) {
+        this.hospitalname = hospitalname;
         this.address = address;
+        this.id = id;
     }
 
-    public String getHospital_id() {
-        return hospital_id;
+    public String getHospitalname() {
+        return hospitalname;
     }
 
-    public void setHospital_id(String hospital_id) {
-        this.hospital_id = hospital_id;
-    }
-
-    public String getHospital_name() {
-        return hospital_name;
-    }
-
-    public void setHospital_name(String hospital_name) {
-        this.hospital_name = hospital_name;
+    public void setHospitalname(String hospitalname) {
+        this.hospitalname = hospitalname;
     }
 
     public String getAddress() {
@@ -40,5 +31,13 @@ public class Hospital {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

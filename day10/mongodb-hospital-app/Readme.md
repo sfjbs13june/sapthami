@@ -28,25 +28,51 @@ docker-compose up -d
 ## Post
 
 ``` 
+curl --location --request POST 'http://localhost:8082/hospital/save' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "hospitalname":"hospital1",
+    "address":"bangalore"
+}'
 
+
+
+curl --location --request POST 'http://localhost:8082/patient/save' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "id":"1",
+    "patienname":"patient1",
+    "hospitalname":"hospital1",
+    "disease":"dengue"
+}'
 ```
 
 ## Get
 
 ``` 
+curl --location --request GET 'http://localhost:8082/hospital/get'
+
+curl --location --request GET 'http://localhost:8082/patient/get'
 
 ```
 
 ## Put
 
 ``` 
- 
+ curl --location --request PUT 'http://localhost:8082/hospital/save' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "hospitalname":"hospital1",
+    "address":"Pune"
+}'
 ```
 
 ## Delete
 
 ```
-curl -X DELETE 'http://localhost:8083/customer/delete?name=Rama' 
+curl --location --request DELETE 'http://localhost:8082/hospital/delete?id=0'
+
+curl --location --request DELETE 'http://localhost:8082/patient/delete?pid=0'
 ```
 
 
@@ -55,7 +81,7 @@ curl -X DELETE 'http://localhost:8083/customer/delete?name=Rama'
 ## Show data
 
 ```
-docker exec -it spring-mongo-app-mongo-1 bash
+docker exec -it mongodb-hospital-app-mongo-1 bash
 
 mongo
 

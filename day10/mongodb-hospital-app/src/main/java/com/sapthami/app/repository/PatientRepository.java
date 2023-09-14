@@ -1,13 +1,11 @@
 package com.sapthami.app.repository;
 
-import com.sapthami.app.module.Patients;
+
+import com.sapthami.app.module.Patient;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.stereotype.Repository;
 
-@Repository
-public interface PatientRepository extends MongoRepository<Patients,String> {
-    public Patients findBypatientId(String patient_id);
-    public Patients deleteBypatientId(String patient_id);
-    public Patients save(Patients patients);
-
+public interface PatientRepository extends MongoRepository<Patient,Integer> {
+    public Patient findById(int pid);
+    public void deleteById(int pid);
+    public Patient save(Patient patient);
 }

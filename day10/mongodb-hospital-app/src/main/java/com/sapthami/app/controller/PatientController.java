@@ -1,38 +1,44 @@
 package com.sapthami.app.controller;
 
-import com.sapthami.app.module.Patients;
+import com.sapthami.app.module.Patient;
 import com.sapthami.app.repository.PatientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RequestMapping("/patient")
+@RestController
+@RequestMapping(value = "/patient")
 public class PatientController {
 
     @Autowired
-    PatientRepository patientRepo;
+    PatientRepository patientRepository;
 
-    @RequestMapping(value = "/save",method= RequestMethod.POST)
-    public Patients create(@RequestBody Patients patients){
-        patients =patientRepo.save(patients);
-        return patients;
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public @ResponseBody
+    String createPatient(@RequestBody final Patient patient){
+       patientRepository.save(patient);
+       return "saved";
     }
-    @RequestMapping(value="/get",method=RequestMethod.GET)
-    public List<Patients> readPatient(){return patientRepo.findAll();}
 
-    @RequestMapping(value = "/update",method=RequestMethod.PUT)
-    public void modifyByID(@RequestParam String patient_id,@RequestParam String hospital_name){
-        Patients patients =patientRepo.findBypatientId(patient_id);
-        patients.setHospital_name(hospital_name);
-        patientRepo.save(patients);
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public @ResponseBody
+    List<Patient> getAll() {
+        return patientRepository.findAll();
     }
-    @RequestMapping(value = "/delete",method=RequestMethod.DELETE)
-    public void deleteById(@RequestParam String patient_id){
-        patientRepo.deleteBypatientId(patient_id);
 
+    @RequestMapping(value = "/update", method = RequestMethod.PUT)
+    public void modifyByID(@RequestParam int pid, @RequestParam String hospitalname) {
+        Patient patient = patientRepository.findById(pid);
+        patient.setHospitalname(hospitalname);
+        patientRepository.save(patient);
+    }
+
+
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public @ResponseBody
+    String store(@RequestParam int pid)  {
+        patientRepository.deleteById(pid);
+        return "deleted";
     }
 }
