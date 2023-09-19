@@ -1,0 +1,4 @@
+patient:
+   url: /getHospitalDetails/{hospitalname}
+school:
+   name: schooltest
