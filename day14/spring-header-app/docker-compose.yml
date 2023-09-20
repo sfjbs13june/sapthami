@@ -1,0 +1,7 @@
+version: '3'
+services:
+  header-app:
+    image: sapthami002/spring-header-app:0.0.1-SNAPSHOT
+    container_name: header-app
+    ports:
+      - "8081:8081"
