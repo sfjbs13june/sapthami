@@ -1,0 +1,6 @@
+version: '3'
+services:
+  hospital-app:
+    image: sapthami002/sapthami-hospital-mysql:0.0.1-SNAPSHOT
+    ports:
+      - "8083:8083"
