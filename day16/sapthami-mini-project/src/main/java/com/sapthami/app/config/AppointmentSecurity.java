@@ -23,7 +23,7 @@ public class AppointmentSecurity extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication()
-                .withUser("doctor123").password("{noop}doctor'spassword").roles("DOCTOR").and()
-                .withUser("patient123").password("{noop}patient'spassword").roles("PATIENT");
+                .withUser("doctor123").password("{noop}doctor'password").roles("DOCTOR").and()
+                .withUser("patient123").password("{noop}patient'password").roles("PATIENT");
     }
 }
