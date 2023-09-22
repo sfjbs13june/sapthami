@@ -41,20 +41,20 @@ public class DoctorControllerTest {
         appointments.add(appointment);
         when(appointmentRepository.findAll()).thenReturn(appointments);
         List<Appointment> result = (List<Appointment>) doctorController.getAppointments("Prem");
-        for (Appointment ap:
+        for (Appointment apnt:
                 result) {
-            assertEquals(appointment.getAppointmentId(),ap.getAppointmentId());
-            assertEquals(appointment.getPatientName(),ap.getPatientName());
-            assertEquals(appointment.getDoctorName(),ap.getDoctorName());
-            assertEquals(appointment.getDate(),ap.getDate());
-            assertEquals(appointment.getPrescription(),ap.getPrescription());
+            assertEquals(appointment.getAppointmentId(),apnt.getAppointmentId());
+            assertEquals(appointment.getPatientName(),apnt.getPatientName());
+            assertEquals(appointment.getDoctorName(),apnt.getDoctorName());
+            assertEquals(appointment.getDate(),apnt.getDate());
+            assertEquals(appointment.getPrescription(),apnt.getPrescription());
         }
 
     }
 
     @Test
     public void saveDoctorAppointmentTest() {
-        Prescription prescription = new Prescription("12ab","2","The patient had throat Infection","Sapthami","Prem");
+        Prescription prescription = new Prescription("101ab","2","The patient had throat Infection","Sapthami","Prem");
         Appointment appointment = new Appointment("2","Sapthami","Prem","23092023",prescription);
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
         when(prescriptionRepository.save(prescription)).thenReturn(prescription);
@@ -64,7 +64,7 @@ public class DoctorControllerTest {
 
     @Test
     public void getPatientAppointmentTest() {
-        Prescription prescription = new Prescription("12ab","2","The patient had throat Infection","Sapthami","Prem");
+        Prescription prescription = new Prescription("101ab","2","The patient had throat Infection","Sapthami","Prem");
         Appointment appointment = new Appointment("2","Sapthami","Prem","23092023",prescription);
         List<Appointment> appointments = new ArrayList<>();
         appointments.add(appointment);
@@ -82,7 +82,7 @@ public class DoctorControllerTest {
 
     @Test
     public void savePatientAppointmentTest() {
-        Prescription prescription = new Prescription("12ab","2","The patient had throat Infection","Sapthami","Prem");
+        Prescription prescription = new Prescription("101ab","2","The patient had throat Infection","Sapthami","Prem");
         Appointment appointment = new Appointment("2","Sapthami","Prem","23092023",prescription);
         when(appointmentRepository.save(appointment)).thenReturn(appointment);
         when(prescriptionRepository.save(prescription)).thenReturn(prescription);
@@ -92,7 +92,7 @@ public class DoctorControllerTest {
 
     @Test
     public void viewPrescriptionTest() {
-        Prescription prescription = new Prescription("12ab","2","The patient had throat Infection","Sapthami","Prem");
+        Prescription prescription = new Prescription("101ab","2","The patient had throat Infection","Sapthami","Prem");
         List<Prescription> list = new ArrayList<>();
         list.add(prescription);
         when(prescriptionRepository.findAll()).thenReturn(list);
@@ -110,10 +110,10 @@ public class DoctorControllerTest {
 
     @Test
     public void savePrescription() {
-        Prescription prescription = new Prescription("12ab","2","The patient had throat Infection","Sapthami","Prem");
+        Prescription prescription = new Prescription("101ab","2","The patient had throat Infection","Sapthami","Prem");
         when(prescriptionRepository.save(prescription)).thenReturn(prescription);
         String response = prescriptionController.store(prescription);
-        assertEquals("Prescription Saved successsfully",response);
+        assertEquals("Prescription Saved Successsfully",response);
     }
 
 
